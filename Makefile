@@ -114,6 +114,14 @@ reload: cc.purge
 	$(PV) $(PROJECT)-schema.sql | $(MYSQL) $(DB)
 	$(PV) $(PROJECT)-data.sql | $(MYSQL) $(DB)
 
+## Database migrations
+
+migrate: ## Run any migrations as required
+	$(CONSOLE) --env=dev doctrine:migrations:migrate --no-interaction --allow-no-migration
+
+migrate.diff: ## Generate a migration by diffing the db and entities
+	$(CONSOLE) --env=dev doctrine:migrations:diff --no-interaction --quiet
+
 ## -- Container debug targets
 
 dump.params: ## List all of the nines container parameters
