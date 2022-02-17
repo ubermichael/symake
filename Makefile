@@ -108,7 +108,7 @@ reset: cc.purge ## Drop the database and recreate it with fixtures
 	$(CONSOLE) doctrine:cache:clear-metadata --quiet
 	$(CONSOLE) --env=dev doctrine:fixtures:load --quiet --no-interaction --group=dev --purger=fk_purger
 
-reload: cc.purge
+reload: cc.purge ## Drop the database and recreate it with data downloaded from the server
 	$(CONSOLE) --env=dev doctrine:database:drop --if-exists --force --quiet
 	$(CONSOLE) --env=dev doctrine:database:create --quiet
 	$(PV) $(PROJECT)-schema.sql | $(MYSQL) $(DB)
