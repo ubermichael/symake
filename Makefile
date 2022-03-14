@@ -217,7 +217,7 @@ fix.list: ## Check the code against the CS rules
 
 ## -- Coding standards checking
 
-lint-all: stan.cc stan lint twiglint twigcs yamllint
+lint-all: stan.cc stan twiglint twigcs yamllint
 
 symlint: yamllint twiglint ## Run the symfony linting checks
 	$(SYMFONY) security:check --quiet
