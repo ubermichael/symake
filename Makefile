@@ -104,6 +104,12 @@ db: ## Create the database if it does not already exist
 	$(CONSOLE) --env=dev doctrine:schema:create --quiet
 	$(CONSOLE) --env=dev doctrine:schema:validate --quiet
 
+db.diff: ## Diff the database schema against the entity definitions
+	$(CONSOLE) --env=dev doctrine:schema:update --dump-sql
+
+db.validate: ## Diff the database schema against the entity definitions
+	$(CONSOLE) --env=dev doctrine:schema:validate
+
 reset: cc.purge ## Drop the database and recreate it with fixtures
 	$(CONSOLE) doctrine:cache:clear-metadata --quiet
 	$(CONSOLE) --env=dev doctrine:fixtures:load --quiet --no-interaction --group=dev --purger=fk_purger
