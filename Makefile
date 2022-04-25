@@ -1,4 +1,4 @@
-include Makefile.common
+include etc/Makefile.common
 
 ## Make file
 

@@ -144,6 +144,9 @@ dump.autowire: ## Show autowireable services
 dump.twig: ## Show all twig configuration
 	$(CONSOLE) debug:twig
 
+dump.router:
+	$(CONSOLE) debug:router
+
 ## -- Solr search and indexing targets
 
 solr.setup: ## Create the SOLR core for indexing
