@@ -130,6 +130,9 @@ migrate: ## Run any migrations as required
 migrate.diff: ## Generate a migration by diffing the db and entities
 	$(CONSOLE) --env=dev doctrine:migrations:diff --no-interaction --quiet
 
+migrate.status: ## Status of database migrations
+	$(CONSOLE) --env=dev doctrine:migrations:status
+
 ## -- Container debug targets
 
 dump.params: ## List all of the nines container parameters
