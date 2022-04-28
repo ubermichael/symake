@@ -172,6 +172,7 @@ solr.open: ## Open the local SOLR core in a web browser
 mailhog.start: ## Start the email catcher
 	$(BREW) services start mailhog
 	open http://localhost:8025
+	@echo "Add MAILER_DSN=smtp://localhost:1025 to .env.local"
 
 mailhog.stop: ## Stop the email catcher
 	$(BREW) services stop mailhog
