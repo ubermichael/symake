@@ -1,4 +1,12 @@
-PFX ?= $(shell brew --prefix)
+BREW := $(shell command -v brew 2> /dev/null)
+
+ifdef BREW
+	PFX ?= $(shell brew --prefix)
+endif
+
+ifndef BREW
+	PFX := ''
+endif
 
 # Executables
 # Override in the including makefile if needed
