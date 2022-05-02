@@ -68,6 +68,9 @@ clean: ## Clean up any dev files
 	rm -rf var/cache/dev/* data/dev/*
 	rm -f var/log/dev-*.log
 
+devconf: ## Configure some dev tools for the project
+	cp etc/configs/* .
+
 ## -- Composer targets
 
 composer.install: ## Installs vendors from composer.lock
