@@ -70,6 +70,7 @@ clean: ## Clean up any dev files
 
 devconf: ## Configure some dev tools for the project
 	cp etc/configs/* .
+	$(COMPOSER) require --dev friendsofphp/php-cs-fixer:^3.4 phpstan/phpstan-symfony phpstan/phpstan-doctrine
 
 ## -- Composer targets
 
