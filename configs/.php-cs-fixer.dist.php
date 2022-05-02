@@ -1,7 +1,7 @@
 <?php
 
 $header = <<<'HEADER'
-(c) 2022 Michael Joyce <mjoyce@sfu.ca>
+(c) 2021 Michael Joyce <mjoyce@sfu.ca>
 This source file is subject to the GPL v2, bundled
 with this source code in the file LICENSE.
 HEADER;
@@ -181,7 +181,7 @@ return $config
         'self_static_accessor' => true,
 
         'single_import_per_statement' => true,
-        'simplified_null_return' => true,
+        'simplified_null_return' => false,
         'strict_comparison' => true,
         'strict_param' => true,
 
