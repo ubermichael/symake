@@ -248,4 +248,4 @@ stan.cc: ## Clear the static analysis cache
 	$(PHPSTAN) clear-result-cache
 
 stan.baseline: ## Generate a new phpstan baseline file
-	$(PHPSTAN) analyze --generate-baseline $(path)
+	$(PHPSTAN) --memory-limit=1G analyze --generate-baseline $(path)
