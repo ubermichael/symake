@@ -146,9 +146,10 @@ migrate.status: ## Status of database migrations
 	$(CONSOLE) --env=dev doctrine:migrations:status
 
 migrate.rollup: ## Roll up all migrations in to a schema definition
-	rm -rf migrations
-	$(CONSOLE) --env=dev doctrine:migrations:dump-schema
-	$(CONSOLE) --env=dev doctrine:migrations:rollup
+	rm -rf migrations/*
+	$(CONSOLE) --env=dev doctrine:migrations:dump-schema --no-interaction --quiet
+	$(CONSOLE) --env=dev doctrine:migrations:rollup --no-interaction --quiet
+	$(PHPCSF) fix migrations
 
 ## -- Container debug targets
 
