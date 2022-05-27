@@ -151,6 +151,10 @@ migrate.rollup: ## Roll up all migrations in to a schema definition
 	$(CONSOLE) --env=dev doctrine:migrations:rollup --no-interaction --quiet
 	$(PHPCSF) fix migrations
 
+migrate.reset: ## Reset all migrations metadata
+	$(CONSOLE) --env=dev doctrine:migrations:version --delete --all --no-interaction --quiet
+	$(CONSOLE) --env=dev doctrine:migrations:version --add --all --no-interaction --quiet
+
 ## -- Container debug targets
 
 dump.params: ## List all of the nines container parameters
