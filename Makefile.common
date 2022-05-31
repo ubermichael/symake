@@ -139,6 +139,11 @@ reload: cc.purge ## Drop the database and recreate it with data downloaded from 
 migrate: ## Run any migrations as required
 	$(CONSOLE) --env=dev doctrine:migrations:migrate --no-interaction --allow-no-migration
 
+migrate.down: ## Undo one migration
+	# This is arcane nonsense and only works in GNU Make
+	$(eval CURRENT=$(shell $(CONSOLE) --env=dev doctrine:migrations:current))
+	$(CONSOLE) --env=dev doctrine:migrations:execute '$(CURRENT)' --down
+
 migrate.diff: ## Generate a migration by diffing the db and entities
 	$(CONSOLE) --env=dev doctrine:migrations:diff --no-interaction --quiet
 
