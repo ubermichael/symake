@@ -138,6 +138,11 @@ db.reload: cc.purge ## Drop the database and recreate it with data downloaded fr
 migrate: ## Run any migrations as required
 	$(CONSOLE) --env=dev doctrine:migrations:migrate --no-interaction --allow-no-migration
 
+migrate.down: ## Undo one migration
+	# This is arcane nonsense and only works in GNU Make
+	$(eval CURRENT=$(shell $(CONSOLE) --env=dev doctrine:migrations:current))
+	$(CONSOLE) --env=dev doctrine:migrations:execute '$(CURRENT)' --down
+
 migrate.diff: ## Generate a migration by diffing the db and entities
 	$(CONSOLE) --env=dev doctrine:migrations:diff --no-interaction --quiet
 
@@ -149,6 +154,10 @@ migrate.rollup: ## Roll up all migrations in to a schema definition
 	$(CONSOLE) --env=dev doctrine:migrations:dump-schema --no-interaction --quiet
 	$(CONSOLE) --env=dev doctrine:migrations:rollup --no-interaction --quiet
 	$(PHPCSF) fix migrations
+
+migrate.reset: ## Reset all migrations metadata
+	$(CONSOLE) --env=dev doctrine:migrations:version --delete --all --no-interaction --quiet
+	$(CONSOLE) --env=dev doctrine:migrations:version --add --all --no-interaction --quiet
 
 ## -- Container debug targets
 
