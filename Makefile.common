@@ -185,7 +185,10 @@ solr.clear: ## Clear the content from the SOLR core
 	$(CONSOLE) nines:solr:clear
 
 solr.config: ## Copy the solr schema to the core
+	$(BREW) services stop solr
 	cp solr/managed-schema $(SOLR_HOME)/conf/managed-schema
+	cp solr/core.properties $(SOLR_HOME)/core.properties
+	cp solr/solrconfig.xml $(SOLR_HOME)/conf/solrconfig.xml
 	$(BREW) services restart solr
 
 solr.delete: ## Remove the SOLR core
