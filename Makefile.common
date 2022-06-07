@@ -202,7 +202,11 @@ solr.open: ## Open the local SOLR core in a web browser
 
 solr.setup: ## Create the SOLR core for indexing
 	solr create -c $(PROJECT)
+	$(BREW) services stop solr
 	cp solr/managed-schema $(SOLR_HOME)/conf/managed-schema
+	cp solr/core.properties $(SOLR_HOME)/core.properties
+	cp solr/solrconfig.xml $(SOLR_HOME)/conf/solrconfig.xml
+	$(BREW) services restart solr
 
 ## -- Useful development services
 
